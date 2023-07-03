@@ -516,14 +516,24 @@ class TestAPICaller(unittest.TestCase):
         #Top Tracks
     def test_getCityTopTracks(self):
         self.assertEqual(caller.getCityTopTracks(id=7060, source="spotify"),"https://api.chartmetric.com/api/city/7060/spotify/top-tracks")
-'''                
-
 
     #CURATOR
 
         #Curator List
     def test_getCuratorList(self):
-        
+        self.assertEqual(caller.getCuratorList(platform="spotify"),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", offset=10, limit=None, editorial=None, majorLabel=None, brand=None, popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", limit=10, editorial=None, majorLabel=None, brand=None, popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", editorial=None, majorLabel=None, brand=None, popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", majorLabel=None, brand=None, popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", brand=None, popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", popularIndie=None, indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", indie=None, audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", audiobook=None, withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", withSocialUrls=None, code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", code2=None, aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+        self.assertEqual(caller.getCuratorList(platform="spotify", aggregated=None),"https://api.chartmetric.com/api/curator/spotify/lists?indie=true&limit=5&offset=0&withSocialUrls=false")
+
         #Curator Fan Metrics
     def test_getCuratorFanMetrics(self):
 
@@ -535,6 +545,8 @@ class TestAPICaller(unittest.TestCase):
 
         #Curator Social / Streaming Service URLs
     def test_getCuratorSocialStreamingURLs(self):
+        
+'''                
 
     #PLAYLIST
     
